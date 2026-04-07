@@ -24,7 +24,7 @@ app.use('/api/logs', logRoutes);
 // --- Production Ready Frontend Hosting ---
 // Serve frontend statically right out of the backend container
 app.use(express.static(path.join(__dirname, '../frontend')));
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
