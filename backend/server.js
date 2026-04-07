@@ -16,9 +16,18 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
+const path = require('path');
+
 app.use('/api/students', studentRoutes);
 app.use('/api/logs', logRoutes);
 
-const PORT = process.env.PORT || 5000;
+// --- Production Ready Frontend Hosting ---
+// Serve frontend statically right out of the backend container
+app.use(express.static(path.join(__dirname, '../frontend')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, console.log(`Server running on port ${PORT}`));

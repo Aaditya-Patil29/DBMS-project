@@ -1,4 +1,7 @@
-const API_BASE_URL = 'http://localhost:5001/api';
+// If on localhost, use port 5001. If on Render (production), use the relative /api path
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+  ? 'http://localhost:5001/api' 
+  : '/api';
 
 // Toast Notification System
 const showToast = (message, type = 'success') => {
