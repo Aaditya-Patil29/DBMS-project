@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Hostel Manager</title>
+  <meta name="description" content="Hostel Management Dashboard">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+  
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="material-symbols-outlined">apartment</span>
+      <span>HostelHub</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class="nav-item active">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="students.html" class="nav-item">
+          <span class="material-symbols-outlined">group</span>
+          <span>Students</span>
+        </a>
+      </li>
+      <li>
+        <a href="tracking.html" class="nav-item">
+          <span class="material-symbols-outlined">meeting_room</span>
+          <span>In/Out Tracking</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="header">
+      <h1>Dashboard Overview</h1>
+    </div>
+
+    <div class="grid-2">
+      <!-- Total Students Card -->
+      <div class="card stat-card">
+        <h3>Total Registered Students</h3>
+        <div id="loading" class="spinner"></div>
+        <div id="total-students" class="stat-value hidden">0</div>
+        <p class="text-secondary">Currently residing in the hostel</p>
+      </div>
+
+      <!-- Quick Actions Card -->
+      <div class="card">
+        <h3>Quick Actions</h3>
+        <p style="color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 2rem;">Manage the facility quickly.</p>
+        <div style="display: flex; gap: 1rem; flex-direction: column;">
+          <a href="students.html" class="btn btn-primary" style="width: 100%;">
+            <span class="material-symbols-outlined">person_add</span>
+            Add New Student
+          </a>
+          <a href="tracking.html" class="btn btn-primary" style="background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%;">
+            <span class="material-symbols-outlined">sync_alt</span>
+            Mark Entry/Exit
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

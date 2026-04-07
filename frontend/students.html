@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students - Hostel Manager</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+  
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="material-symbols-outlined">apartment</span>
+      <span>HostelHub</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class="nav-item">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="students.html" class="nav-item active">
+          <span class="material-symbols-outlined">group</span>
+          <span>Students</span>
+        </a>
+      </li>
+      <li>
+        <a href="tracking.html" class="nav-item">
+          <span class="material-symbols-outlined">meeting_room</span>
+          <span>In/Out Tracking</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="header">
+      <h1>Student Management</h1>
+    </div>
+
+    <div class="grid-2" style="grid-template-columns: 1fr 2fr;">
+      
+      <!-- Add Student Form -->
+      <div class="card">
+        <h3>Add New Student</h3>
+        <form id="add-student-form" style="margin-top: 1.5rem;">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" class="form-control" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="form-control" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label for="roomNumber">Room Number</label>
+            <input type="text" id="roomNumber" class="form-control" required placeholder="Ex: 101A">
+          </div>
+          <div class="form-group">
+            <label for="feesStatus">Fees Status</label>
+            <select id="feesStatus" class="form-control" required>
+              <option value="Unpaid">Unpaid</option>
+              <option value="Paid">Paid</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+            <span class="material-symbols-outlined">add</span>
+            Add Student
+          </button>
+        </form>
+      </div>
+
+      <!-- Students List -->
+      <div class="card">
+        <h3>Resident Directory</h3>
+        <p class="text-secondary" style="margin-bottom: 1.5rem;">Manage all registered hostel residents.</p>
+        
+        <div id="loading" class="spinner hidden"></div>
+        
+        <div class="table-container">
+          <table id="students-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Room</th>
+                <th>Fees</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="students-list">
+              <!-- Rows to be populated by JS -->
+            </tbody>
+          </table>
+        </div>
+        <div id="empty-state" class="hidden" style="text-align: center; padding: 2rem;">
+          <p class="text-secondary">No students found.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/students.js"></script>
+</body>
+</html>
