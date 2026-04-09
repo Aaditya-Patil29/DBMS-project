@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
+
 <body>
-  
-  <!-- Sidebar -->
+
+
   <aside class="sidebar">
     <div class="logo">
       <span class="material-symbols-outlined">apartment</span>
@@ -37,15 +39,15 @@
     </ul>
   </aside>
 
-  <!-- Main Content -->
+
   <main class="main-content">
     <div class="header">
       <h1>Student Management</h1>
     </div>
 
     <div class="grid-2" style="grid-template-columns: 1fr 2fr;">
-      
-      <!-- Add Student Form -->
+
+
       <div class="card">
         <h3>Add New Student</h3>
         <form id="add-student-form" style="margin-top: 1.5rem;">
@@ -75,13 +77,13 @@
         </form>
       </div>
 
-      <!-- Students List -->
+
       <div class="card">
         <h3>Resident Directory</h3>
         <p class="text-secondary" style="margin-bottom: 1.5rem;">Manage all registered hostel residents.</p>
-        
+
         <div id="loading" class="spinner hidden"></div>
-        
+
         <div class="table-container">
           <table id="students-table">
             <thead>
@@ -94,7 +96,7 @@
               </tr>
             </thead>
             <tbody id="students-list">
-              <!-- Rows to be populated by JS -->
+
             </tbody>
           </table>
         </div>
@@ -109,4 +111,5 @@
   <script src="js/main.js"></script>
   <script src="js/students.js"></script>
 </body>
+
 </html>

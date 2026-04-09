@@ -17,9 +17,9 @@ async function fetchStudents() {
 
   try {
     const students = await window.fetchAPI('/students');
-    
+
     loading.classList.add('hidden');
-    
+
     if (students.length === 0) {
       emptyState.classList.remove('hidden');
       return;
@@ -30,7 +30,7 @@ async function fetchStudents() {
 
     students.forEach(student => {
       const tr = document.createElement('tr');
-      
+
       const feeBadgeClass = student.feesStatus === 'Paid' ? 'badge-paid' : 'badge-unpaid';
       const statusBadgeClass = student.status === 'IN' ? 'badge-in' : 'badge-out';
 
@@ -58,7 +58,7 @@ async function fetchStudents() {
 
 async function handleAddStudent(e) {
   e.preventDefault();
-  
+
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const roomNumber = document.getElementById('roomNumber').value;
@@ -72,10 +72,10 @@ async function handleAddStudent(e) {
 
     window.showToast('Student added successfully!');
     document.getElementById('add-student-form').reset();
-    fetchStudents(); // Refresh list
+    fetchStudents();
 
   } catch (error) {
-    // Error handled by fetchAPI wrapper
+
   }
 }
 
@@ -88,7 +88,7 @@ async function deleteStudent(id) {
       window.showToast('Student removed via system.');
       fetchStudents();
     } catch (error) {
-      // Error handled by fetchAPI
+
     }
   }
 }

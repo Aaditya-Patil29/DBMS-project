@@ -1,8 +1,6 @@
 const Student = require('../models/Student');
 
-// @desc    Get all students
-// @route   GET /api/students
-// @access  Public
+
 const getStudents = async (req, res) => {
   try {
     const students = await Student.find({});
@@ -12,9 +10,7 @@ const getStudents = async (req, res) => {
   }
 };
 
-// @desc    Get total number of students
-// @route   GET /api/students/count
-// @access  Public
+
 const getStudentCount = async (req, res) => {
   try {
     const count = await Student.countDocuments();
@@ -24,9 +20,7 @@ const getStudentCount = async (req, res) => {
   }
 };
 
-// @desc    Add new student
-// @route   POST /api/students
-// @access  Public
+
 const addStudent = async (req, res) => {
   const { name, email, roomNumber, feesStatus } = req.body;
 
@@ -42,7 +36,7 @@ const addStudent = async (req, res) => {
       email,
       roomNumber,
       feesStatus,
-      status: 'IN' // Default status
+      status: 'IN'
     });
 
     if (student) {
@@ -55,9 +49,7 @@ const addStudent = async (req, res) => {
   }
 };
 
-// @desc    Delete student
-// @route   DELETE /api/students/:id
-// @access  Public
+
 const deleteStudent = async (req, res) => {
   try {
     const student = await Student.findById(req.params.id);

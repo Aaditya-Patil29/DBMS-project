@@ -11,11 +11,11 @@ async function fetchStudentsDropdown() {
   try {
     const students = await window.fetchAPI('/students');
     select.innerHTML = '<option value="" disabled selected>-- Choose a student --</option>';
-    
+
     students.forEach(student => {
       const option = document.createElement('option');
       option.value = student._id;
-      // Show if they are CURRENTLY IN or OUT to help user decide
+
       option.textContent = `${student.name} (Room: ${student.roomNumber}) - Currently [${student.status}]`;
       select.appendChild(option);
     });
@@ -26,7 +26,7 @@ async function fetchStudentsDropdown() {
 
 async function markStatus(actionType) {
   const studentId = document.getElementById('studentSelect').value;
-  
+
   if (!studentId) {
     window.showToast('Please select a student first', 'error');
     return;
@@ -37,12 +37,12 @@ async function markStatus(actionType) {
       method: 'POST',
       body: JSON.stringify({ studentId, actionType })
     });
-    
+
     window.showToast(`Student marked as ${actionType}`);
-    fetchLogs(); // refresh logs
-    fetchStudentsDropdown(); // refresh dropdown statuses
+    fetchLogs();
+    fetchStudentsDropdown();
   } catch (error) {
-    // Error toast handled by fetchAPI
+
   }
 }
 
@@ -58,9 +58,9 @@ async function fetchLogs() {
 
   try {
     const logs = await window.fetchAPI('/logs');
-    
+
     loading.classList.add('hidden');
-    
+
     if (logs.length === 0) {
       emptyState.classList.remove('hidden');
       return;
@@ -71,12 +71,12 @@ async function fetchLogs() {
 
     logs.forEach(log => {
       const tr = document.createElement('tr');
-      
+
       const badgeClass = log.actionType === 'IN' ? 'badge-in' : 'badge-out';
       const date = new Date(log.timestamp);
       const timeString = date.toLocaleString();
-      
-      // Safety check in case student was deleted but log remains
+
+
       const studentName = log.student ? log.student.name : 'Unknown User';
       const roomNum = log.student ? log.student.roomNumber : '-';
 
