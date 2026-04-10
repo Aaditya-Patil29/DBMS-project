@@ -7,28 +7,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchStudentsDropdown() {
-  const select = document.getElementById('studentSelect');
+  const datalist = document.getElementById('studentList');
   try {
     const students = await window.fetchAPI('/students');
-    select.innerHTML = '<option value="" disabled selected>-- Choose a student --</option>';
+    datalist.innerHTML = '';
+    
+    window.studentMap = {};
 
     students.forEach(student => {
       const option = document.createElement('option');
-      option.value = student._id;
-
-      option.textContent = `${student.name} (Room: ${student.roomNumber}) - Currently [${student.status}]`;
-      select.appendChild(option);
+      const text = `${student.name} (Room: ${student.roomNumber}) - Currently [${student.status}]`;
+      option.value = text;
+      datalist.appendChild(option);
+      
+      window.studentMap[text] = student._id;
     });
   } catch (error) {
-    select.innerHTML = '<option value="" disabled>Error loading students</option>';
+    console.error('Error fetching students for datalist:', error);
   }
 }
 
 async function markStatus(actionType) {
-  const studentId = document.getElementById('studentSelect').value;
+  const inputValue = document.getElementById('studentSearch').value;
+  const studentId = window.studentMap ? window.studentMap[inputValue] : null;
 
   if (!studentId) {
-    window.showToast('Please select a student first', 'error');
+    window.showToast('Please select a valid student from the search list', 'error');
     return;
   }
 
@@ -39,6 +43,7 @@ async function markStatus(actionType) {
     });
 
     window.showToast(`Student marked as ${actionType}`);
+    document.getElementById('studentSearch').value = '';
     fetchLogs();
     fetchStudentsDropdown();
   } catch (error) {

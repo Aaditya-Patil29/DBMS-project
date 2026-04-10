@@ -3,6 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const addForm = document.getElementById('add-student-form');
   addForm.addEventListener('submit', handleAddStudent);
+
+  const searchInput = document.getElementById('searchTable');
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#students-list tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+  }
 });
 
 async function fetchStudents() {

@@ -79,8 +79,15 @@
 
 
       <div class="card">
-        <h3>Resident Directory</h3>
-        <p class="text-secondary" style="margin-bottom: 1.5rem;">Manage all registered hostel residents.</p>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h3 style="margin: 0; margin-bottom: 0.5rem;">Resident Directory</h3>
+            <p class="text-secondary" style="margin: 0;">Manage all registered hostel residents.</p>
+          </div>
+          <div style="flex: 1; max-width: 300px; min-width: 200px;">
+             <input type="text" id="searchTable" class="form-control" placeholder="Search students..." style="padding: 0.5rem 1rem;">
+          </div>
+        </div>
 
         <div id="loading" class="spinner hidden"></div>
 
